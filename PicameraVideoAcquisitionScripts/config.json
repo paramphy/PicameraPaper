@@ -1,0 +1,20 @@
+{
+    "camera": {
+        "width": 640,
+        "height": 480,
+        "framerate": 30,
+        "video_stabilization": false,
+        "exposure_mode": "night",
+        "brightness": 55,
+        "contrast": 50,
+        "sharpness": 50,
+        "saturation": 30,
+        "awb_mode": "off",
+        "awb_gains": 1.4,
+        "id": 1
+    },
+    "gpio": {
+        "bouncetime": 800,
+        "pin_ttl": 27
+    }
+}

@@ -1,0 +1,7 @@
+mock==5.1.0
+numpy==1.21.0
+opencv_python==3.4.8.29
+pandas==2.0.3
+Pillow==10.4.0
+pytest==8.2.2
+setuptools==49.2.1
