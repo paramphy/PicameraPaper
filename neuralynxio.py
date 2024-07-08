@@ -56,7 +56,7 @@ def loadNcs(filename, should_d2a=True, should_read_time=True, trim_zeros=True,
     # .ncs files have a timestamp every 512 data points, so lets interpolate
     # the timestamps in between those - this is messy code, but works
     if should_read_time:
-    	ts = np.zeros(csc.shape)
+        ts = np.zeros(csc.shape)
         ts[::512] = temp['time']
         xo = np.arange(ts.size)
         ts = np.interp(xo, xo[::512], ts[::512])
@@ -111,7 +111,7 @@ def nextSmallerElement(timestamps, eventStopTimestamp):
 	except ValueError: return "Nothing Found"
 
 def fileSplitterUsingEvents(ncsData, eventStartTimestamp, eventStartName, eventStopTimestamp, eventStopName):
-        """Splits the ncs data on the basis of event start time and event stop time.
+    """Splits the ncs data on the basis of event start time and event stop time.
     Keyword arguments:
     ncsData -- refers to the data collected over a channel
     eventStartTimestamp --  start time for the event
@@ -122,21 +122,21 @@ def fileSplitterUsingEvents(ncsData, eventStartTimestamp, eventStartName, eventS
     - frequency data in the range between event start time and event stop time
     """
 	#store all the timestamps in one single list
-	ncsTimestamp = []
-	for ts in ncsData[1]:
-		ncsTimestamp.append(ts[0])
+    ncsTimestamp = []
+    for ts in ncsData[1]:
+        ncsTimestamp.append(ts[0])
 
 	#get time stamp next to start time
-	eventStartTime = nextGreaterElement(ncsTimestamp, eventStartTimestamp)
+    eventStartTime = nextGreaterElement(ncsTimestamp, eventStartTimestamp)
 	#get time stamp just before stop time
-	eventStopTime = nextSmallerElement(ncsTimestamp, eventStopTimestamp)
-
-	dataPoints = []
-	for ts in ncsData[1]:
-		if ts[0]>= eventStartTime and ts[0]<=eventStopTime:
+    eventStopTime = nextSmallerElement(ncsTimestamp, eventStopTimestamp)
+    
+    dataPoints = []
+    for ts in ncsData[1]:
+        if ts[0]>= eventStartTime and ts[0]<=eventStopTime:
                   for t in ts[4]:
-                     dataPoints.append(t*1e6*a2d_conversion)            
-	return dataPoints
+                     dataPoints.append(t*1e6*a2d_conversion)
+    return dataPoints
 
 
 def loadTetrodeNcs(filename, should_d2a=True, trim_zeros=True):
